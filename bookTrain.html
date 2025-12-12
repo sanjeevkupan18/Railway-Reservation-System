@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Ticket</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #f6f6f6;
+    }
+
+    .train-card {
+        background: #fff;
+        margin: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2),
+                0 -4px 8px rgba(0,0,0,0.05),
+                -4px 4px 8px rgba(0,0,0,0.05),
+                4px 4px 8px rgba(0,0,0,0.05);
+        transition:0.3s ease;
+    }
+
+    .train-card:hover{
+        box-shadow: 0 8px 16px #75b4ae,
+                0 -4px 8px #75b4ae,
+                -4px 4px 8px #75b4ae,
+                4px 4px 8px #75b4ae
+    }
+
+    .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .train-name {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .runs-on {
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+    .time-row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .compartment-row {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .comp-btn {
+        padding: 10px 15px;
+        border: 1px solid #999;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.3s;
+        font-size: 14px;
+    }
+
+    .comp-btn.selected {
+        background: #007bff;
+        color: #fff;
+        border-color: #007bff;
+    }
+
+    .bottom-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 15px;
+        box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content:left;
+    }
+
+    .next-btn {
+        background: orange;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .next-btn:hover{
+        background: rgb(58, 151, 250);
+    }
+</style>
+</head>
+<body>
+
+<div class="train-card">
+    <div class="top-row">
+        <div class="train-name">VANDE BHARAT EXP (22304)</div>
+        <div class="runs-on">Runs On: M T W T F S S</div>
+    </div>
+
+    <div class="time-row">
+        <div>18:02 | DHANBAD</div>
+        <div>19:01 | DURGAPUR</div>
+    </div>
+
+    <div class="compartment-row">
+        <div class="comp-btn" onclick="selectCompartment(this)">General</div>
+        <div class="comp-btn" onclick="selectCompartment(this)">Sleeper</div>
+        <div class="comp-btn" onclick="selectCompartment(this)">AC</div>
+    </div>
+</div>
+
+<div class="train-card">
+    <div class="top-row">
+        <div class="train-name">SEALDAH RAJDHANI (12314)</div>
+        <div class="runs-on">Runs On: M T W T F S S</div>
+    </div>
+
+    <div class="time-row">
+        <div>06:23 | DHANBAD</div>
+        <div>07:31 | DURGAPUR</div>
+    </div>
+
+    <div class="compartment-row">
+        <div class="comp-btn" onclick="selectCompartment(this)">General</div>
+        <div class="comp-btn" onclick="selectCompartment(this)">Sleeper</div>
+        <div class="comp-btn" onclick="selectCompartment(this)">AC</div>
+    </div>
+</div>
+
+<div class="train-card">
+    <div class="top-row">
+        <div class="train-name"> COALFIELD EXPRESS (22387)</div>
+        <div class="runs-on">Runs On: M T W T F S S</div>
+    </div>
+
+    <div class="time-row">
+        <div>05:50 | DHANBAD</div>
+        <div>07:49 | DURGAPUR</div>
+    </div>
+
+    <div class="compartment-row">
+        <div class="comp-btn" onclick="selectCompartment(this)">General</div>
+        <div class="comp-btn" onclick="selectCompartment(this)">Sleeper</div>
+        <div class="comp-btn" onclick="selectCompartment(this)">AC</div>
+    </div>
+</div>
+
+<div class="bottom-bar">
+    <button class="next-btn" onclick="goNext()">Next</button>
+</div>
+
+<!-- <script>
+function selectCompartment(btn) {
+    const row = btn.parentElement;
+    const buttons = row.querySelectorAll('.comp-btn');
+    buttons.forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+}
+
+function goNext(){
+    window.location.href="./passengerDetails.html"
+}
+</script> -->
+<script>
+function selectCompartment(btn) {
+    const row = btn.parentElement;
+    const buttons = row.querySelectorAll('.comp-btn');
+    buttons.forEach(b => b.classList.remove('selected'));
+    
+    btn.classList.add('selected');
+
+    // Mark the train card as selected
+    const card = btn.closest('.train-card');
+    document.querySelectorAll('.train-card').forEach(c => c.classList.remove('active-card'));
+    card.classList.add('active-card');
+}
+
+function goNext() {
+
+    // Find if any train card has selected class
+    const selected = document.querySelector('.train-card .comp-btn.selected');
+
+    if (!selected) {
+        alert("Please select a train class before proceeding!");
+        return;
+    }
+
+    // If selected → go to next page
+    window.location.href = "./passengerDetails.html";
+}
+</script>
+
+</body>
+</html>

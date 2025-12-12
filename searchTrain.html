@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Train Search Layout</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url('train-image.jpg') no-repeat right center/50% auto;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100vh;
+        background-image: url(./Images/daniel-abadia-Njq3Nz6-5rQ-unsplash.jpg);
+        object-fit: cover;
+        background-size: cover;
+    }
+
+    .search-box {
+        background: #fff;
+        padding: 35px;
+        height:380px;
+        width: 550px;
+        margin-left: 50px;
+        border-radius: 16px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2),
+                0 -4px 8px rgba(0,0,0,0.05),
+                -4px 4px 8px rgba(0,0,0,0.05),
+                4px 4px 8px rgba(0,0,0,0.05);
+        transition:0.3s ease;
+    }
+    .search-box:hover{
+        box-shadow: 0 8px 16px #75b4ae,
+                0 -4px 8px #75b4ae,
+                -4px 4px 8px #75b4ae,
+                4px 4px 8px #75b4ae
+    }
+
+    .search-box h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 22px;
+        color: #333;
+        text-align: center;
+    }
+
+    .search-box label {
+        font-size: 14px;
+        color: #444;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .search-box input {
+        width: 95%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .search-box button {
+        margin-top: 50px;
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .search-box button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="search-box">
+    <h2>Train Search</h2>
+
+    <label for="from">From</label>
+    <input type="text" id="from" placeholder="Enter starting station" />
+
+    <label for="to">To</label>
+    <input type="text" id="to" placeholder="Enter destination station" />
+
+    <label for="date">Date</label>
+    <input type="date" id="date" />
+
+    <button onclick="searchTrain()">Search</button>
+</div>
+
+<script>
+function searchTrain() {
+    const from = document.getElementById('from').value;
+    const to = document.getElementById('to').value;
+    const date = document.getElementById('date').value;
+
+    if (!from || !to || !date) {
+        alert('Please fill all fields');
+        return;
+    }
+
+    alert(`Searching trains from ${from} to ${to} on ${date}`);
+    // Redirect to next page
+    window.location.href = "./bookTrain.html";
+}
+</script>
+
+</body>
+</html>
