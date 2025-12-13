@@ -352,6 +352,50 @@ nav{
     to { transform: scale(1); opacity: 1; }
 }
 
+/* Css for Profile and Slider Sign out */
+.profile-section {
+  display: none;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.profile-section img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.profile-section span {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Slider dropdown */
+.profile-slider {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #fff;
+  width: 150px;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.profile-slider a {
+  padding: 12px;
+  text-decoration: none;
+  color: #333;
+}
+
+.profile-slider a:hover {
+  background: #f0f0f0;
+}
+
 /* Hero Section */
 
 .hero{
@@ -381,7 +425,10 @@ nav{
     
 }
 
-
+/* Display none when not log in */
+#bookTicketBtn{
+    display: none;
+}
 
 .hero .book-ticket{
     top:35%;
@@ -1038,17 +1085,37 @@ footer .footer-copyright .copyright{
                 <div class="logo-container">
                     <img src="./Images/transport.png" alt="logo">
                 </div>
-                <a href="#home">Rail<span>MatriX</span></a>
+                <a href="home.html">Rail<span>MatriX</span></a>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </div>
-            <div class="right-links">
+            <!-- <div class="right-links">
                 <a href="#" class="Register-btn" id="registerBtn">Register</a>
                 <a href="#" class="login-btn" id="loginBtn">Login</a>
+            </div> -->
+            <div class="right-links">
+
+                <!-- Auth buttons (shown when logged out) -->
+                <div id="authButtons">
+                    <a href="#" class="Register-btn" id="registerBtn">Register</a>
+                    <a href="#" class="login-btn" id="loginBtn">Login</a>
+                </div>
+
+                <!-- Profile section (shown when logged in) -->
+                <div id="profileSection" class="profile-section">
+                    <img src="./Images/profile.avif" id="profilePic" alt="profile">
+                    <span id="profileName"></span>
+
+                    <!-- Slider -->
+                    <div id="profileSlider" class="profile-slider">
+                        <a href="#" id="logoutBtn">Sign Out</a>
+                    </div>
+                </div>
+
             </div>
         </nav>
     </header>
@@ -1066,13 +1133,13 @@ footer .footer-copyright .copyright{
             <br>
             <form id="registerForm">
       <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" required />
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" required />
       </div>
 
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" required />
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" required />
       </div>
 
       <div class="form-group">
@@ -1082,13 +1149,13 @@ footer .footer-copyright .copyright{
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" required />
+        <input type="password" id="regPassword" required />
       </div>
 
       <div class="form-group">
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" required />
-        <p class="error" id="errorText">Passwords do not match!</p>
+        <p class="error" id="regError">Passwords do not match!</p>
       </div>
 
       <button type="submit" class="btn">Register</button>
@@ -1114,14 +1181,14 @@ footer .footer-copyright .copyright{
        <br>
        <form id="loginForm">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" required />
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required />
       </div>
 
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" required />
-        <p class="error" id="errorText">Invalid username or password!</p>
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" required />
+        <p class="error" id="loginError">Invalid username or password!</p>
       </div>
 
       <button type="submit" class="btn">Login</button>
@@ -1139,7 +1206,11 @@ footer .footer-copyright .copyright{
         
         <h1>Book Your Train Tickets Hassle-Free</h1>
         <h2>“Plan your journey with ease — search, book, and manage your railway reservations anytime, anywhere.”</h2>
-        <a href="#" class="book-ticket" id="bookTicketBtn">Book a Ticket</a>
+        <!-- <a href="#" class="book-ticket" id="bookTicketBtn">Book a Ticket</a> -->
+        <!-- Button hidden by default -->
+        <a href="searchTrain.html" target="_blank" class="book-ticket" id="bookTicketBtn">
+            Book a Ticket
+        </a>
     </section>
 
     <!-- About Section -->
@@ -1322,6 +1393,10 @@ footer .footer-copyright .copyright{
         </div>
     </footer>
     
+    <script type="module" src="Js/auth.js"></script>
+    <script type="module" src="js/pageNavbar.js"></script>
+    <script type="module" src="js/navbarAuth.js"></script>
+    <script type="module" src="Js/homeAuth.js"></script>
     <script>
         // Buttons in header
 const loginBtn = document.getElementById("loginBtn");

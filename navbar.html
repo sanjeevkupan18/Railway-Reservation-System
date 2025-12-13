@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar</title>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    height:100%;
+    width:100%;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+/* Header Section */
+
+header{
+    height:60px;
+    width:100%;
+    top:0;
+    left: 0;
+    padding:0px 80px;
+    position: fixed;
+    transition: top 0.3s ease-in-out;
+    z-index: 1000;
+    background-color: #fff;
+}
+nav{
+    height:100%;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border:2px solid red; */
+    padding:20px;
+}
+
+.left-links{
+    width:30%;
+    display: flex;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    gap:10px;
+}
+.logo-container{
+    height:50px;
+    width:50px;
+    
+}
+.logo-container img{
+    height:50px;
+
+}
+
+.left-links a{
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.left-links a span{
+    color:#75b4ae;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap:28px;
+    /* border:2px solid red; */
+    padding:13px 60px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2),
+                0 -4px 8px rgba(0,0,0,0.05),
+                -4px 4px 8px rgba(0,0,0,0.05),
+                4px 4px 8px rgba(0,0,0,0.05);
+    
+}
+.nav-links li a{
+    text-decoration: none;
+    font-family: "Poppins",sans-serif;
+    color:#111;
+    font-size: 18px;
+    position: relative;
+}
+.nav-links li a:hover{
+    color:#75b4ae;
+}
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* little space below text */
+    width: 0;
+    height: 2px;
+    background: #75b4ae;
+    transition: all 0.3s ease;
+}
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.right-links{
+    width:30%;
+    display: flex;
+    justify-content:right;
+    align-items: center;
+    gap:10px;
+}
+
+.right-links .Register-btn{
+    padding:8px 40px;
+    font-size: 15px;
+    background-color: #75b4ae;
+    /* border:none; */
+    border:2px solid #75b4ae;
+    border-radius: 6px;
+    text-decoration: none;
+    color:#111;
+    font-family: "Poppins",sans-serif;
+    transition: 0.3s ease;
+}
+
+.right-links .Register-btn:hover{
+    border:2px solid #75b4ae;
+    background-color: #fff;
+}
+
+.right-links .login-btn{
+    padding:8px 45px;
+    font-size: 15px;
+    background-color: #1a1a1a;
+    color:#fff;
+    margin-right: 10px;
+    margin-left: 10px;
+    border:2px solid #111;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: "Poppins",sans-serif;
+    transition: 0.3s ease;
+}
+
+.right-links .login-btn:hover{
+    color:greenyellow;
+}
+
+/* Css for Profile and Slider Sign out */
+.profile-section {
+  /* display: none; */
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+}
+
+.profile-section img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.profile-section span {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Slider dropdown */
+.profile-slider {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #fff;
+  width: 150px;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.profile-slider a {
+  padding: 12px;
+  text-decoration: none;
+  color: #333;
+}
+
+.profile-slider a:hover {
+  background: #f0f0f0;
+}
+
+.logoutBtn{
+    padding:8px 40px;
+    font-size: 15px;
+    background-color: #75b4ae;
+    /* border:none; */
+    border:2px solid #75b4ae;
+    border-radius: 6px;
+    text-decoration: none;
+    color:#111;
+    font-family: "Poppins",sans-serif;
+    transition: 0.3s ease;
+}
+
+.logoutBtn:hover{
+    border:2px solid #75b4ae;
+    background-color: #fff;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left-links">
+                <div class="logo-container">
+                    <img src="./Images/transport.png" alt="logo">
+                </div>
+                <a href="home.html">Rail<span>MatriX</span></a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </div>
+            <!-- <div class="right-links">
+                <a href="#" class="Register-btn" id="registerBtn">Register</a>
+                <a href="#" class="login-btn" id="loginBtn">Login</a>
+            </div> -->
+            <div class="right-links">
+
+                <!-- Profile section (shown when logged in) -->
+                <div id="profileSection" class="profile-section">
+                    <img src="./Images/profile.avif" id="profilePic" alt="profile">
+                    <span id="profileName"></span>
+
+                    <!-- Slider -->
+                    <div id="profileSlider" class="profile-slider">
+                        <a href="#" id="logoutBtn">Sign Out</a>
+                    </div>
+                    <button class="logoutBtn">Log Out</button>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    
+</body>
+</html>
