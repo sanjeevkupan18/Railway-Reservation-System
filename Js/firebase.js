@@ -5,12 +5,12 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase
 
 // Your Firebase configuration (your existing keys are OK)
 const firebaseConfig = {
-  apiKey: "AIzaSyDgPe5WFY6rS6D-cYSnQ25f0s6X6Y-oiqI",
-  authDomain: "railmatrix-6487f.firebaseapp.com",
-  projectId: "railmatrix-6487f",
-  storageBucket: "railmatrix-6487f.appspot.com",
-  messagingSenderId: "348864203506",
-  appId: "1:348864203506:web:ec0b5c5424900c90061e6b",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
